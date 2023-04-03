@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22E252" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="AppSetting" representedClassName="AppSetting" syncable="YES" codeGenerationType="class">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="presetUnitsMode" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="MField" representedClassName="MField" isAbstract="YES" syncable="YES" codeGenerationType="category">
+        <attribute name="archiveID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="clearOnRun" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="controlType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="fieldType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="unitsSuffix" optional="YES" attributeType="String"/>
+        <attribute name="userOrder" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MTask" inverseName="fields" inverseEntity="MTask"/>
+    </entity>
+    <entity name="MFieldBool" representedClassName="MFieldBool" parentEntity="MField" syncable="YES" codeGenerationType="category">
+        <attribute name="value" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="MFieldInt16" representedClassName="MFieldInt16" parentEntity="MField" syncable="YES" codeGenerationType="category">
+        <attribute name="defaultValue" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="stepValue" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="upperBound" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="MRoutine" representedClassName="MRoutine" syncable="YES" codeGenerationType="category">
+        <attribute name="archiveID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="color" optional="YES" attributeType="Binary"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="imageName" optional="YES" attributeType="String"/>
+        <attribute name="isTemplate" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="lastDuration" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="lastStartedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="pausedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="userOrder" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="taskGroups" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MTaskGroup" inverseName="routine" inverseEntity="MTaskGroup"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MTask" inverseName="routine" inverseEntity="MTask"/>
+    </entity>
+    <entity name="MTask" representedClassName="MTask" syncable="YES" codeGenerationType="category">
+        <attribute name="archiveID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="lastCompletedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="userOrder" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="fields" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MField" inverseName="task" inverseEntity="MField"/>
+        <relationship name="routine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MRoutine" inverseName="tasks" inverseEntity="MRoutine"/>
+    </entity>
+    <entity name="MTaskGroup" representedClassName="MTaskGroup" syncable="YES" codeGenerationType="category">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="groupRaw" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="userOrder" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="routine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MRoutine" inverseName="taskGroups" inverseEntity="MRoutine"/>
+    </entity>
+    <entity name="ZField" representedClassName="ZField" syncable="YES" codeGenerationType="class">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="fieldArchiveID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="unitsSuffix" optional="YES" attributeType="String"/>
+        <relationship name="zFieldRuns" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ZFieldRun" inverseName="zField" inverseEntity="ZFieldRun"/>
+        <relationship name="zTask" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ZTask" inverseName="zFields" inverseEntity="ZTask"/>
+    </entity>
+    <entity name="ZFieldRun" representedClassName="ZFieldRun" syncable="YES" codeGenerationType="class">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="userRemoved" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="value" optional="YES" attributeType="String"/>
+        <relationship name="zField" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ZField" inverseName="zFieldRuns" inverseEntity="ZField"/>
+        <relationship name="zTaskRun" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ZTaskRun" inverseName="zFieldRuns" inverseEntity="ZTaskRun"/>
+    </entity>
+    <entity name="ZRoutine" representedClassName="ZRoutine" syncable="YES" codeGenerationType="class">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="routineArchiveID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="zRoutineRuns" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ZRoutineRun" inverseName="zRoutine" inverseEntity="ZRoutineRun"/>
+        <relationship name="zTasks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ZTask" inverseName="zRoutine" inverseEntity="ZTask"/>
+    </entity>
+    <entity name="ZRoutineRun" representedClassName="ZRoutineRun" syncable="YES" codeGenerationType="class">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="elapsedSecs" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="startedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="userRemoved" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <relationship name="zRoutine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ZRoutine" inverseName="zRoutineRuns" inverseEntity="ZRoutine"/>
+        <relationship name="zTaskRuns" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ZTaskRun" inverseName="zRoutineRun" inverseEntity="ZTaskRun"/>
+    </entity>
+    <entity name="ZTask" representedClassName="ZTask" syncable="YES" codeGenerationType="class">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="taskArchiveID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="zFields" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ZField" inverseName="zTask" inverseEntity="ZField"/>
+        <relationship name="zRoutine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ZRoutine" inverseName="zTasks" inverseEntity="ZRoutine"/>
+        <relationship name="zTaskRuns" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ZTaskRun" inverseName="zTask" inverseEntity="ZTaskRun"/>
+    </entity>
+    <entity name="ZTaskRun" representedClassName="ZTaskRun" syncable="YES" codeGenerationType="class">
+        <attribute name="completedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="userRemoved" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <relationship name="zFieldRuns" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ZFieldRun" inverseName="zTaskRun" inverseEntity="ZFieldRun"/>
+        <relationship name="zRoutineRun" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ZRoutineRun" inverseName="zTaskRuns" inverseEntity="ZRoutineRun"/>
+        <relationship name="zTask" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ZTask" inverseName="zTaskRuns" inverseEntity="ZTask"/>
+    </entity>
+</model>

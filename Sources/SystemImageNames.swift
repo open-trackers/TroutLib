@@ -1,0 +1,88 @@
+//
+//  SystemImageNames.swift
+//
+// Copyright 2022, 2023  OpenAlloc LLC
+//
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at https://mozilla.org/MPL/2.0/.
+//
+
+import Foundation
+
+// initial pool of images to assign to routines
+public let systemImageNames = [
+    "wrench.and.screwdriver",
+    "wrench.and.screwdriver.fill",
+    "airplane",
+    "atom",
+    "balloon",
+    "balloon.fill",
+    "bicycle",
+    "bolt.fill",
+    "bolt.shield.fill",
+    "burn",
+    "car",
+    "car.fill",
+    "carrot",
+    "carrot.fill",
+    "crown.fill",
+    "cup.and.saucer",
+    "cup.and.saucer.fill",
+    "drop",
+    "drop.fill",
+    "dumbbell",
+    "dumbbell.fill",
+    "figure.arms.open",
+    "figure.barre",
+    "figure.cooldown",
+    "figure.cross.training",
+    "figure.dance",
+    "figure.fall",
+    "figure.flexibility",
+    "figure.gymnastics",
+    "figure.mind.and.body",
+    "figure.mixed.cardio",
+    "figure.pilates",
+    "figure.rolling",
+    "figure.run",
+    "figure.strengthtraining.functional",
+    "figure.strengthtraining.traditional",
+    "figure.walk",
+    "figure.wave",
+    "figure.yoga",
+    "fish",
+    "fish.fill",
+    "flag.2.crossed.fill",
+    "flag.checkered",
+    "flame",
+    "fork.knife",
+    "fuelpump.fill",
+    "glowplug",
+    "hammer",
+    "hammer.fill",
+    "hare.fill",
+    "house",
+    "house.fill",
+    "infinity",
+    "key.fill",
+    "lock",
+    "lock.fill",
+    "mug",
+    "mug.fill",
+    "pawprint.fill",
+    "popcorn",
+    "popcorn.fill",
+    "screwdriver",
+    "screwdriver.fill",
+    "snowflake",
+    "sparkles",
+    "takeoutbag.and.cup.and.straw",
+    "takeoutbag.and.cup.and.straw.fill",
+    "tornado",
+    "tortoise.fill",
+    "wind",
+    "wrench.adjustable",
+    "wrench.adjustable.fill",
+    // "figure.core.training", getting a not found error from simulator    // add new ones here
+]
