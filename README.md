@@ -1,10 +1,10 @@
 # FocusLib
 
-Shared data layer and business logic for the Gym MRoutine Tracker, presently available as an iOS app and independent watchOS app.
+Shared data layer and business logic for the Task Routine Tracker, presently available as an iOS app and independent watchOS app.
 
 For full details, including free download links from the App Store, visit:
 
-* [_Open Trackers_ Website](https://open-trackers.github.io) - website for _Gym MRoutine Tracker_ and _Daily Calorie Tracker_ apps
+* [_Open Trackers_](https://open-trackers.github.io) - product website for all the tracker apps
 * [_Open Trackers_ Project](https://github.com/open-trackers) - Github site for the development project, including full source code
 
 ## Important Note
