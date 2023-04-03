@@ -1,4 +1,4 @@
-# FocusLib
+# TroutLib
 
 Shared data layer and business logic for the Task Routine Tracker, presently available as an iOS app and independent watchOS app.
 
