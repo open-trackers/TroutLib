@@ -26,14 +26,17 @@ public struct WidgetEntry: TimelineEntry, Codable {
     }
 
     public let date: Date
+    public let name: String
     public let timeInterval: TimeInterval
     public let pairs: [Pair]
 
     public init(date: Date = Date.now,
+                name: String,
                 timeInterval: TimeInterval,
                 pairs: [Pair] = [])
     {
         self.date = date
+        self.name = name
         self.timeInterval = timeInterval
         self.pairs = pairs
     }
@@ -101,6 +104,7 @@ public extension WidgetEntry {
     {
         print("REFRESH target \(timeInterval)")
         let entry = WidgetEntry(date: now,
+                                name: "TODO",
                                 timeInterval: timeInterval,
                                 pairs: pairs)
         UserDefaults.appGroup.set(entry)
