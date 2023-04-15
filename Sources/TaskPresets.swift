@@ -20,6 +20,7 @@ public let taskPresets: TaskPresetDict = [
         TaskPreset("Cash", [FieldPreset("Amount", unitsSuffix: "$", initialValue: Int16(500), upperBound: Int16(10000))]),
         TaskPreset("Credit/ATM cards", [FieldPreset("Count", initialValue: Int16(2), upperBound: Int16(20))]),
         TaskPreset("Emergency Contact List"),
+        TaskPreset("Forward Mail (task)"),
         TaskPreset("Government ID"),
         TaskPreset("Hand Sanitizer"),
         TaskPreset("Insurance Cards"),
