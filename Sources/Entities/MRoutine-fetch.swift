@@ -53,6 +53,13 @@ public extension MRoutine {
             NSSortDescriptor(keyPath: \MRoutine.createdAt, ascending: true),
         ]
     }
+
+    static func byPausedAt(ascending: Bool) -> [NSSortDescriptor] {
+        [
+            NSSortDescriptor(keyPath: \MRoutine.pausedAt, ascending: ascending),
+            NSSortDescriptor(keyPath: \MRoutine.createdAt, ascending: true),
+        ]
+    }
 }
 
 public extension MRoutine {
