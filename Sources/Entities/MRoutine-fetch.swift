@@ -21,8 +21,8 @@ public extension MRoutine {
         return try context.firstFetcher(predicate: pred, sortDescriptors: sort)
     }
 
-    static func getFirst(_ context: NSManagedObjectContext) throws -> MRoutine? {
-        try context.firstFetcher(sortDescriptors: byUserOrder())
+    static func getFirst(_ context: NSManagedObjectContext, sort: [NSSortDescriptor] = byUserOrder()) throws -> MRoutine? {
+        try context.firstFetcher(sortDescriptors: sort)
     }
 }
 
@@ -43,6 +43,20 @@ public extension MRoutine {
     static func byUserOrder(ascending: Bool = true) -> [NSSortDescriptor] {
         [
             NSSortDescriptor(keyPath: \MRoutine.userOrder, ascending: ascending),
+            NSSortDescriptor(keyPath: \MRoutine.createdAt, ascending: true),
+        ]
+    }
+
+    static func byLastStartedAt(ascending: Bool) -> [NSSortDescriptor] {
+        [
+            NSSortDescriptor(keyPath: \MRoutine.lastStartedAt, ascending: ascending),
+            NSSortDescriptor(keyPath: \MRoutine.createdAt, ascending: true),
+        ]
+    }
+
+    static func byPausedAt(ascending: Bool) -> [NSSortDescriptor] {
+        [
+            NSSortDescriptor(keyPath: \MRoutine.pausedAt, ascending: ascending),
             NSSortDescriptor(keyPath: \MRoutine.createdAt, ascending: true),
         ]
     }
