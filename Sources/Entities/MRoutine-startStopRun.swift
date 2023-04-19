@@ -70,11 +70,11 @@ public extension MRoutine {
         }
 
         // store the time accumulated since the last start
-        let durationSince = startedOrResumedAt.distance(to: now)
+        let elapsedTime = now.timeIntervalSince(startedOrResumedAt)
         if pausedAt != nil {
-            lastDuration += durationSince
+            lastDuration += elapsedTime
         } else {
-            lastDuration = durationSince
+            lastDuration = elapsedTime
         }
 
         pausedAt = pause ? now : nil
