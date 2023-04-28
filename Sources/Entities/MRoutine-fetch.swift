@@ -60,6 +60,13 @@ public extension MRoutine {
             NSSortDescriptor(keyPath: \MRoutine.createdAt, ascending: true),
         ]
     }
+
+    static func byName(ascending: Bool = true) -> [NSSortDescriptor] {
+        [
+            NSSortDescriptor(keyPath: \MRoutine.name, ascending: ascending),
+            NSSortDescriptor(keyPath: \MRoutine.createdAt, ascending: true),
+        ]
+    }
 }
 
 public extension MRoutine {
