@@ -96,3 +96,13 @@ public extension MTask {
         }
     }
 }
+
+public extension MTask {
+    // NOTE: does NOT save context
+    func move(_ context: NSManagedObjectContext, to nu: MRoutine) throws {
+        let nuMaxOrder = try MTask.maxUserOrder(context, routine: nu) ?? 0
+        if let old = routine { old.removeFromTasks(self) }
+        userOrder = nuMaxOrder + 1
+        nu.addToTasks(self)
+    }
+}
