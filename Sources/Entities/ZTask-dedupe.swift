@@ -1,6 +1,6 @@
 
 //
-//  ZTask.swift
+//  ZTask-dedupe.swift
 //
 // Copyright 2023  OpenAlloc LLC
 //
@@ -14,10 +14,10 @@ import CoreData
 import TrackerLib
 
 extension ZTask {
-    internal static func dedupe(_ context: NSManagedObjectContext,
-                                routineArchiveID: UUID,
-                                taskArchiveID: UUID,
-                                inStore: NSPersistentStore) throws
+    static func dedupe(_ context: NSManagedObjectContext,
+                       routineArchiveID: UUID,
+                       taskArchiveID: UUID,
+                       inStore: NSPersistentStore) throws
     {
         let pred = getPredicate(routineArchiveID: routineArchiveID, taskArchiveID: taskArchiveID)
         let sort = ZTask.byCreatedAt()

@@ -13,7 +13,7 @@ import CoreData
 import TrackerLib
 
 extension MRoutine {
-    internal static func dedupe(_ context: NSManagedObjectContext, archiveID: UUID) throws {
+    static func dedupe(_ context: NSManagedObjectContext, archiveID: UUID) throws {
         let pred = getPredicate(archiveID: archiveID)
         let sort = byCreatedAt()
         var first: MRoutine?

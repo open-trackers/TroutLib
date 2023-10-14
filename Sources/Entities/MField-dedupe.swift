@@ -1,6 +1,6 @@
 
 //
-//  MField.swift
+//  MField-dedupe.swift
 //
 // Copyright 2023  OpenAlloc LLC
 //
@@ -14,9 +14,9 @@ import CoreData
 import TrackerLib
 
 extension MField {
-    internal static func dedupe(_ context: NSManagedObjectContext,
-                                taskArchiveID: UUID,
-                                fieldArchiveID: UUID) throws
+    static func dedupe(_ context: NSManagedObjectContext,
+                       taskArchiveID: UUID,
+                       fieldArchiveID: UUID) throws
     {
         let pred = getPredicate(taskArchiveID: taskArchiveID,
                                 fieldArchiveID: fieldArchiveID)

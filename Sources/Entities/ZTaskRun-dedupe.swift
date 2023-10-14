@@ -1,6 +1,6 @@
 
 //
-//  ZTaskRun.swift
+//  ZTaskRun-dedupe.swift
 //
 // Copyright 2023  OpenAlloc LLC
 //
@@ -14,10 +14,10 @@ import CoreData
 import TrackerLib
 
 extension ZTaskRun {
-    internal static func dedupe(_ context: NSManagedObjectContext,
-                                taskArchiveID: UUID,
-                                completedAt: Date,
-                                inStore: NSPersistentStore) throws
+    static func dedupe(_ context: NSManagedObjectContext,
+                       taskArchiveID: UUID,
+                       completedAt: Date,
+                       inStore: NSPersistentStore) throws
     {
         let pred = getPredicate(taskArchiveID: taskArchiveID,
                                 completedAt: completedAt)

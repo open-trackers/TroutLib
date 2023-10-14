@@ -1,6 +1,6 @@
 
 //
-//  ZField.swift
+//  ZField-dedupe.swift
 //
 // Copyright 2023  OpenAlloc LLC
 //
@@ -14,10 +14,10 @@ import CoreData
 import TrackerLib
 
 extension ZField {
-    internal static func dedupe(_ context: NSManagedObjectContext,
-                                taskArchiveID: UUID,
-                                fieldArchiveID: UUID,
-                                inStore: NSPersistentStore) throws
+    static func dedupe(_ context: NSManagedObjectContext,
+                       taskArchiveID: UUID,
+                       fieldArchiveID: UUID,
+                       inStore: NSPersistentStore) throws
     {
         let pred = getPredicate(taskArchiveID: taskArchiveID, fieldArchiveID: fieldArchiveID)
         let sort = ZField.byCreatedAt()

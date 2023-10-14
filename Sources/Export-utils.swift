@@ -18,18 +18,18 @@ import TrackerLib
                                       archiveStore: NSPersistentStore,
                                       format: ExportFormat = .CSV) throws -> Data?
     {
-        let entries: [(String, Data)] = [
-            try makeDelimFile(AppSetting.self, context, format: format, inStore: mainStore),
-            try makeDelimFile(MRoutine.self, context, format: format, inStore: mainStore),
-            try makeDelimFile(MTask.self, context, format: format, inStore: mainStore),
-            try makeDelimFile(MTaskGroup.self, context, format: format, inStore: mainStore),
-            try makeDelimFile(MFieldInt16.self, context, format: format, inStore: mainStore),
-            try makeDelimFile(MFieldBool.self, context, format: format, inStore: mainStore),
+        let entries: [(String, Data)] = try [
+            makeDelimFile(AppSetting.self, context, format: format, inStore: mainStore),
+            makeDelimFile(MRoutine.self, context, format: format, inStore: mainStore),
+            makeDelimFile(MTask.self, context, format: format, inStore: mainStore),
+            makeDelimFile(MTaskGroup.self, context, format: format, inStore: mainStore),
+            makeDelimFile(MFieldInt16.self, context, format: format, inStore: mainStore),
+            makeDelimFile(MFieldBool.self, context, format: format, inStore: mainStore),
 
-            try makeDelimFile(ZRoutine.self, context, format: format, inStore: archiveStore),
-            try makeDelimFile(ZRoutineRun.self, context, format: format, inStore: archiveStore),
-            try makeDelimFile(ZTask.self, context, format: format, inStore: archiveStore),
-            try makeDelimFile(ZTaskRun.self, context, format: format, inStore: archiveStore),
+            makeDelimFile(ZRoutine.self, context, format: format, inStore: archiveStore),
+            makeDelimFile(ZRoutineRun.self, context, format: format, inStore: archiveStore),
+            makeDelimFile(ZTask.self, context, format: format, inStore: archiveStore),
+            makeDelimFile(ZTaskRun.self, context, format: format, inStore: archiveStore),
         ]
 
         return try createZipArchive(context, entries: entries)

@@ -1,6 +1,6 @@
 
 //
-//  ZFieldRun.swift
+//  ZFieldRun-dedupe.swift
 //
 // Copyright 2023  OpenAlloc LLC
 //
@@ -14,10 +14,10 @@ import CoreData
 import TrackerLib
 
 extension ZFieldRun {
-    internal static func dedupe(_ context: NSManagedObjectContext,
-                                fieldArchiveID: UUID,
-                                completedAt: Date,
-                                inStore: NSPersistentStore) throws
+    static func dedupe(_ context: NSManagedObjectContext,
+                       fieldArchiveID: UUID,
+                       completedAt: Date,
+                       inStore: NSPersistentStore) throws
     {
         let pred = getPredicate(fieldArchiveID: fieldArchiveID,
                                 completedAt: completedAt)

@@ -1,6 +1,6 @@
 
 //
-//  MTask.swift
+//  MTask-dedupe.swift
 //
 // Copyright 2023  OpenAlloc LLC
 //
@@ -14,7 +14,7 @@ import CoreData
 import TrackerLib
 
 extension MTask {
-    internal static func dedupe(_ context: NSManagedObjectContext, routineArchiveID: UUID, taskArchiveID: UUID) throws {
+    static func dedupe(_ context: NSManagedObjectContext, routineArchiveID: UUID, taskArchiveID: UUID) throws {
         let pred = getPredicate(routineArchiveID: routineArchiveID, taskArchiveID: taskArchiveID)
         let sort = MTask.byCreatedAt()
         var first: MTask?
